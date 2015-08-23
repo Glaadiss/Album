@@ -1,0 +1,10 @@
+<% @friends.each do |f| %>
+    <%= User.find(f.friend_id).email %>
+
+    <br>
+<%end%>
+<% @friends2.each do |f| %>
+    <%= User.find(f.user_id).email %>
+
+    <br>
+<%end%>

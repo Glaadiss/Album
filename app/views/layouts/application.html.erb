@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AlbumQ</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'defaults', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <p id="notice"> <%= notice %> </p>
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+      <h2> <%= link_to " ALBUM ", {action: 'index', controller: '/start'}, class: "btn btn-info btn-lg"   %> </h2>
+
+
+
+    </div>
+    <% if user_signed_in? %>
+       <div class="par" > Zalogowany jako <font color="#f5f5f5">  <%=current_user.email %></font>
+        <%= link_to "Edycja", edit_user_registration_path, class: "btn btn-success" %>
+        <%= button_to "Wyloguj", destroy_user_session_path, method: :delete, class: "btn btn-danger", form: {style: 'display:inline-block'} %>
+        <%= link_to "Dodaj album  ", {action: :addalbum, controller: '/start'}, class: "btn btn-primary"   %>
+        <%= link_to "  Dodaj foto", {action: :addphoto, controller: '/start'}, class: "btn btn-primary"   %> </div>
+
+    <%else%>
+        <p class="par">
+        <%= link_to "Zajerestruj", new_user_registration_path, class: "btn btn-primary"  %>
+        <%= link_to "Zaloguj", new_user_session_path, class: "btn btn-primary"  %> </p>
+
+    <%end%>
+
+  </div>
+
+</nav>
+
+
+
+
+
+      <%= yield %>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<% @photos.each do |f| %>
+
+
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <%= image_tag f.avatar.url, class:"img-responsive"%>
+          </div>
+          <div class="col-md-8">
+            <center><h3> <%=f.name %>   </h3></center>
+            <div class="col-md-8">
+              <%= f.info %>
+              </div>
+            </div>
+            </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <%end%>
+
+
+
+
+
+

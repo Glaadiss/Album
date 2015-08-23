@@ -1,0 +1,14 @@
+<%=form_for :photoalbum , url: {action: "madealbum"}, html: {multipart: true} do |f| %>
+
+    <h3> Nazwa: </h3> <%= f.text_field :name  %> <br>
+
+    <h3> Info</h3> <%= f.cktext_area :info  %> <br>
+
+    <h3> Dostep </h3> <%=f.check_box :private?%> prywatny ? <br>
+
+
+
+
+    <%= f.submit%>
+<%end%>
+

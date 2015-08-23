@@ -1,0 +1,27 @@
+<% @users.each do |f| %>
+
+
+    <div class="col-md-12">
+      <div class="col-md-8">
+    <%=f.email %>
+    </div>
+      <div class="col-md-4">
+
+        <% if Friendship.where(user_id: current_user.id, friend_id: f.id).ids.blank?%>
+          		   <% if Friendship.where(user_id: f.id, friend_id: current_user.id).ids.blank?%>
+        					<%= link_to "Add Friend", {id: f.id, action:'create', controller: 'friendship'} %>
+                   <%end%>
+        <%end%>
+
+		<% if Friendship.where.not(user_id: current_user.id, friend_id: f.id).ids.blank?%>
+          		   <% if Friendship.where.not(user_id: f.id, friend_id: current_user.id).ids.blank?%>
+        					<%= link_to "Remove Friend", {id: f.id, action:'destroy', controller: 'friendship'} %>
+       
+                          <%end%>
+        <%end%>
+
+ 	</div>
+
+    </div>
+
+<%end%>

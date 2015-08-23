@@ -1,0 +1,43 @@
+<% @albums.each do |f| %>
+
+
+
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <%= link_to f.name, {id: f.id, action: 'photos'}%>
+      </div>
+      <div class="col-md-3">
+        <%=f.info%>
+      </div>
+
+      <div class="col-md-1">
+        <% if f.private? == true  %>
+            Tak
+        <%else%>
+            Nie
+        <%end%>
+      </div>
+
+
+      <div class="col-md-2">
+        <%= f.user.email %>
+      </div>
+
+      <div class="col-md-1">
+        <%=f.likes.select {|r| r.like}.size - f.likes.select {|r| r.dislike}.size%>
+      </div>
+
+      <div class="col-md-1">
+        <%= link_to( "Like", {id: f.id,  action: 'newlike'}) %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to( "Disike", {id: f.id,  action: 'newdislike'}) %>
+      </div>
+
+      <div class="col-md-1">
+        <%= link_to( "Unlike", {id: f.id,  action: 'unlike'}) %>
+      </div>
+    </div>
+
+
+<%end%>

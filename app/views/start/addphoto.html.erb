@@ -1,0 +1,21 @@
+<%=form_for :photo , url: {action: "madephoto"}, html: {multipart: true} do |f| %>
+
+
+    <div class="field">
+   <%= f.label :name%> <br> <%= f.text_field :name  %>
+    </div>
+    <div class="field">
+      <%= f.label :info%> <br>  <%= f.cktext_area :info  %>
+    </div>
+    <div class="field">
+      <%= f.label :zdjecie%>  <br>   <%= f.file_field :avatar %>
+    </div>
+    <div class="field">
+      <%= f.label :Photo_album%> <br>   <%=f.select :photoalbum_id, Photoalbum.all.map{ |x| [x.name, x.id]},  {prompt: "Wybierz"} %> <%= f.text_field :new_album %>
+    </div>
+  <br>
+    <div class="actions">
+    <%= f.submit "Dodaj" %>
+    </div>
+
+<%end%>
